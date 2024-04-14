@@ -10,32 +10,7 @@
   <groupId>org.example</groupId>
   <artifactId>Chameleon2</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <dependencies>
-    <dependency>
-      <groupId>ru.ibsqa.chameleon</groupId>
-      <artifactId>chameleon-allure-cucumber</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>ru.ibsqa.chameleon</groupId>
-      <artifactId>chameleon-db-cucumber</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.microsoft.sqlserver</groupId>
-      <artifactId>mssql-jdbc</artifactId>
-      <version>12.6.1.jre11</version>
-    </dependency>
-    <dependency>
-      <groupId>ru.ibsqa.chameleon</groupId>
-      <artifactId>chameleon-log</artifactId>
-    </dependency>
-    <!--jdbc:h2:tcp://localhost:9092/mem:testdb -->
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <version>1.4.200</version>
-      <scope>runtime</scope>
-    </dependency>
-  </dependencies>
+
   <repositories>
     <repository>
       <id>chameleon</id>
@@ -43,4 +18,41 @@
       <url>https://nexus.appline.ru/repository/chameleon</url>
     </repository>
   </repositories>
+
+  <dependencies>
+  <dependency>
+    <groupId>ru.ibsqa.chameleon</groupId>
+    <artifactId>chameleon-web-cucumber</artifactId>
+    <scope>test</scope>
+  </dependency>
+
+  <dependency>
+    <groupId>ru.ibsqa.chameleon</groupId>
+    <artifactId>chameleon-log</artifactId>
+    <scope>test</scope>
+  </dependency>
+
+  <dependency>
+    <groupId>ru.ibsqa.chameleon</groupId>
+    <artifactId>chameleon-allure-cucumber</artifactId>
+    <scope>test</scope>
+  </dependency>
+
+  <dependency>
+    <groupId>io.qameta.allure</groupId>
+    <artifactId>allure-cucumber7-jvm</artifactId>
+  </dependency>
+
+  <dependency>
+    <groupId>ru.ibsqa.chameleon</groupId>
+    <artifactId>chameleon-db-cucumber</artifactId>
+    <scope>test</scope>
+  </dependency>
+  <dependency>
+    <groupId>com.h2database</groupId>
+    <artifactId>h2</artifactId>
+    <version>1.4.200</version>
+    <scope>runtime</scope>
+  </dependency>
+  </dependencies>
 </project>
