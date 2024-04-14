@@ -39,17 +39,10 @@
       <artifactId>chameleon-allure-cucumber</artifactId>
       <scope>test</scope>
     </dependency>
-    <!--jdbc:h2:tcp://localhost:9092/mem:testdb -->
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
-      <version>1.4.200</version>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.microsoft.sqlserver</groupId>
-      <artifactId>mssql-jdbc</artifactId>
-      <version>12.6.1.jre11</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
