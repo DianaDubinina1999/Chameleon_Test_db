@@ -10,7 +10,7 @@ public class ProductPageActionsSteps {
     Statement statement;
 
     public ProductPageActionsSteps() throws SQLException {
-        String connectionType = System.getProperty("remote");
+        String connectionType = System.getProperty("local");
         if (connectionType != null && connectionType.equals("remote")) {
 
             connection = DriverManager.getConnection
@@ -28,15 +28,22 @@ public class ProductPageActionsSteps {
     }
 
 
-        @Дано("Выборка всех строк таблицы FOOD индексом >={int}")
-        public void выборкаВсехСтрокТаблицыFOODИндексом ( int arg0) throws SQLException {
-            String query = "SELECT  *  FROM FOOD WHERE FOOD_ID >= 5";
-            ResultSet resultSet = statement.executeQuery (query);
-            if (resultSet.next ()) {
-                throw new IllegalStateException ("Таблица не является изначальной.");
+    @Дано("Выборка всех строк таблицы FOOD и проверка на количество записей")
+    public void выборкаВсехСтрокТаблицыFOODИПроверкаНаКоличествоЗаписей() throws SQLException {
+        String query = "SELECT COUNT(*) as rowCount FROM FOOD";
+        ResultSet resultSet = statement.executeQuery(query);
+
+        if (resultSet.next()) {
+            int rowCount = resultSet.getInt("rowCount");
+            if (rowCount != 4) {
+                throw new IllegalStateException("Таблица FOOD не содержит 4 записи. Обнаружено записей: " + rowCount);
             } else {
-                System.out.println ("Таблица является базовой.");
+                System.out.println("Таблица FOOD содержит 4 записи.");
             }
+        } else {
+            throw new IllegalStateException("Не удалось получить количество записей в таблице FOOD");
+        }
+
 
         }
 
@@ -55,9 +62,9 @@ public class ProductPageActionsSteps {
         }
 
         @Дано("Удаление всех строк таблицы FOOD с индексом >={int}")
-        public void удалениеВсехСтрокТаблицыFOODСИндексом ( int arg0) throws SQLException {
-            String delete = "DELETE from FOOD where FOOD_ID >= 5";
-            statement.executeUpdate (delete);
+       public void удалениеВсехСтрокТаблицыFOODСИндексом ( int arg0) throws SQLException {
+           String delete = "DELETE from FOOD where FOOD_ID BETWEEN 5 AND 8";
+          statement.executeUpdate (delete);
         }
 
 }
